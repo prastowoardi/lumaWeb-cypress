@@ -1,0 +1,62 @@
+{
+    "negatif": [
+        {
+            "case": "First Name Kosong",
+            "firstName": null,
+            "lastName": "Doe",
+            "email": "john@yopmail.com",
+            "password": "4QqtyXIvUMZq2xC",
+            "confirmPW": "4QqtyXIvUMZq2xC"
+        },
+        {
+            "case": "Last Name Kosong",
+            "firstName": "John",
+            "lastName": null,
+            "email": "john@yopmail.com",
+            "password": "4QqtyXIvUMZq2xC",
+            "confirmPW": "4QqtyXIvUMZq2xC"
+        },
+        {
+            "case": "Email Kosong",
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": null,
+            "password": "4QqtyXIvUMZq2xC",
+            "confirmPW": "4QqtyXIvUMZq2xC"
+        },
+        {
+            "case": "Password Kosong",
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "john@yopmail.com",
+            "password": null,
+            "confirmPW": "4QqtyXIvUMZq2xC"
+        },
+        {
+            "case": "Password Confirmation Kosong",
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "john@yopmail.com",
+            "password": "4QqtyXIvUMZq2xC",
+            "confirmPW": null
+        },
+        {
+            "case": "Password Confirmation Beda dengan Password",
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "john@yopmail.com",
+            "password": "4QqtyXIvUMZq2xC",
+            "confirmPW": "4QqtyXIvUMZ"
+        }
+    ],
+    "positif": [
+        {
+            "case": "Field diisi semua",
+            "firstName": "John",
+            "lastName": "Doe",
+            "email": "john@yopmail.com",
+            "password": "4QqtyXIvUMZq2xC",
+            "confirmPW": "4QqtyXIvUMZq2xC"
+        }
+    ]
+}
