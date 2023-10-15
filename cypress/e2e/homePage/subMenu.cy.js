@@ -4,63 +4,63 @@ describe ('Cek fungsi dropdown menu sub menu pada halaman index', () => {
     })
 
     it ('Sub Menu: Jaket wanita', () => {
-        cy.jaketCewek()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html')
+        cy.topCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-11', 'Jackets', 'https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html');
     })
 
     it ('Sub Menu: Hoodie wanita', () => {
-        cy.hoodieCewek()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/women/tops-women/hoodies-and-sweatshirts-women.html')
+        cy.topCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-12', 'Hoodies & Sweatshirts', 'https://magento.softwaretestingboard.com/women/tops-women/hoodies-and-sweatshirts-women.html')
     })
 
     it ('Sub Menu: Tees wanita', () => {
-        cy.teesCewek()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/women/tops-women/tees-women.html')
+        cy.topCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-13', 'Tees', 'https://magento.softwaretestingboard.com/women/tops-women/tees-women.html')
     })
 
     it ('Sub Menu: Bra wanita', () => {
-        cy.braCewek()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/women/tops-women/tanks-women.html')
+        cy.topCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-14', 'Bras & Tanks', 'https://magento.softwaretestingboard.com/women/tops-women/tanks-women.html')
     })
     
     it ('Sub Menu: Celana wanita', () => {
-        cy.pantsCewek()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/women/bottoms-women/pants-women.html')
+        cy.bottomCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-15', 'Pants', 'https://magento.softwaretestingboard.com/women/bottoms-women/pants-women.html')
     })
     
     it ('Sub Menu: Short wanita', () => {
-        cy.shortsCewek()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/women/bottoms-women/shorts-women.html')
+        cy.bottomCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-16', 'Shorts', 'https://magento.softwaretestingboard.com/women/bottoms-women/shorts-women.html')
     })
 
     it ('Sub Menu: Jaket pria', () => {
-        cy.jaketCowok()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/men/tops-men/jackets-men.html')
+        cy.topCowok()
+        cy.clickSubMenuAndCheckURL('#ui-id-19', 'Jackets', 'https://magento.softwaretestingboard.com/men/tops-men/jackets-men.html')
     })
 
     it ('Sub Menu: Hoodie pria', () => {
-        cy.hoodieCowok()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/men/tops-men/hoodies-and-sweatshirts-men.html')
+        cy.topCowok()
+        cy.clickSubMenuAndCheckURL('#ui-id-20', 'Hoodies & Sweatshirts', 'https://magento.softwaretestingboard.com/men/tops-men/hoodies-and-sweatshirts-men.html')
     })
 
-    it ('Sub Menu: Hoodie pria', () => {
-        cy.teesCowok()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/men/tops-men/tees-men.html')
+    it ('Sub Menu: Tees pria', () => {
+        cy.topCowok()
+        cy.clickSubMenuAndCheckURL('#ui-id-21', 'Tees', 'https://magento.softwaretestingboard.com/men/tops-men/tees-men.html')
     })
 
     it ('Sub Menu: Tanks pria', () => {
-        cy.tanksCowok()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/men/tops-men/tanks-men.html')
+        cy.topCowok()
+        cy.clickSubMenuAndCheckURL('#ui-id-22', 'Tanks', 'https://magento.softwaretestingboard.com/men/tops-men/tanks-men.html')
     })
 
     it ('Sub Menu: Celana pria', () => {
-        cy.pantsCowok()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/men/bottoms-men/pants-men.html')
+        cy.bottomCowok()
+        cy.clickSubMenuAndCheckURL("#ui-id-23", 'Pants','https://magento.softwaretestingboard.com/men/bottoms-men/pants-men.html')
     })
 
     it ('Sub Menu: Shorts pria', () => {
-        cy.shortsCowok()
-        cy.url().should('eq','https://magento.softwaretestingboard.com/men/bottoms-men/shorts-men.html')
+        cy.bottomCowok()
+        cy.clickSubMenuAndCheckURL('#ui-id-24', 'Shorts','https://magento.softwaretestingboard.com/men/bottoms-men/shorts-men.html')
     })
 
     it ('Sub Menu: Gear - Bags', () => {
