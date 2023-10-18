@@ -2,6 +2,8 @@ const searchKey = "Radiant Tee"
 describe ('Searching product', () => {
     beforeEach ('', () => {
         cy.visit('')
+        cy.get('.panel > .header').contains('Sign In').click()
+        cy.login()
     })
 
     it ('Search dan klik produk', () => {
@@ -22,12 +24,14 @@ describe ('Searching product', () => {
         })
         cy.wait(1000)
         cy.get('#option-label-size-143-item-168').click()
+        cy.wait(1000)
         cy.get('#option-label-color-93-item-56').click()
+        cy.wait(1000)
         cy.get('#product-addtocart-button').click()
 
         cy.get('.message-success > div').invoke('text').then((text) => {
             cy.log(text)
-            // expect(text).to.equal('You added Radiant Tee to your shopping cart.')
+            expect(text).to.include('You added Radiant Tee to your shopping cart.')
         })
     })
 })
