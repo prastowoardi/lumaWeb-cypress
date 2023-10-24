@@ -1,3 +1,5 @@
+const tees = "Desiree Fitness Tee"
+
 describe ('Checkout barang', () => {
     beforeEach ('', () => {
         cy.visit('')
@@ -16,6 +18,87 @@ describe ('Checkout barang', () => {
                 const line = lines[i].trim()
             
                 if (line.includes('Radiant Tee')) {
+                    productName = line
+                    break
+                }
+            }
+            cy.log('Nama produk yang ada di keranjang: ' + productName)
+        })
+
+        cy.get('#cart-391699-qty').invoke('attr', 'value').then((value) => {
+            cy.log('Jumlah barang: ' + value)
+        })          
+
+        cy.wait(2000)
+        cy.get('strong > .price').invoke('text').then((text) => {
+            const grandTotal = text.replace(/[^\d.]/g, '')
+            cy.log('Total yang harus dibayarkan: $' + grandTotal)
+        })
+
+        cy.get('.methods > :nth-child(1) > .action').click()
+
+        cy.wait(7000)
+        // Mengisi Alamat Pengiriman
+        cy.get('[name="company"]').type('PT Testing Indonesia')
+        cy.get('[name="street[0]"]').type('Jl. Pegangsaan Timur VI')
+        cy.get('[name="city"]').type('Semarang')
+        cy.get('[name="region_id"]').select('Florida')
+        cy.get('[name="postcode"]').type('50521')
+        cy.get('[name="country_id"]').select('Indonesia')
+        cy.get('[name="telephone"]').type('8098731231233')
+        cy.get('#checkout-shipping-method-load').contains('$5.00').click()
+        cy.get('.button').contains('Next').click()
+
+        cy.wait(1000)
+        // Review and Payments
+        cy.get('#billing-address-same-as-shipping-checkmo').click()
+        cy.get('.payment-method-content > :nth-child(4) > div.primary > .action').click()
+
+        cy.get('.checkout-success > :nth-child(1)').invoke('text').then((text) => {
+                const orderNumber = text.split(' ')
+                cy.log('Your Order Number is: ' + orderNumber[4])
+        })
+
+        cy.url().should('eq', 'https://magento.softwaretestingboard.com/checkout/onepage/success/')
+    })
+
+    it ('Tidak ada barang di keranjang belanja', () => {
+        cy.get('.showcart').click()
+        // cy.get('#ui-id-1').should('be.visible')
+        cy.get('.cart-empty').invoke('text').then((text) => {
+            const splitText = text.split('\n')
+            expect(text).to.include(splitText[1])
+        })
+        
+        // Menuju barang yang dicari dan menambahkan ke cart
+        cy.topCewek()
+        cy.clickSubMenuAndCheckURL('#ui-id-13', 'Tees', 'https://magento.softwaretestingboard.com/women/tops-women/tees-women.html')
+
+        cy.get('.wrapper > .products').contains(tees).click()
+
+        cy.wait(1000)
+        cy.get('#option-label-size-143-item-169').click()
+        cy.wait(1000)
+        cy.get('#option-label-color-93-item-49').click()
+        cy.wait(1000)
+        cy.get('#product-addtocart-button').click()
+
+        cy.get('.message-success > div').invoke('text').then((text) => {
+            cy.log(text)
+            expect(text).to.include('You added Radiant Tee to your shopping cart.')
+        })
+
+        // Awal mula checkout
+        cy.get('.showcart').click()
+
+        cy.get('.item-info > .item').invoke('text').then((text) => {
+            const lines = text.split('\n')
+            let productName = ''
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim()
+            
+                if (line.includes(tees)) {
                     productName = line
                     break
                 }
