@@ -69,25 +69,9 @@ describe ('Checkout barang', () => {
             const splitText = text.split('\n')
             expect(text).to.include(splitText[1])
         })
-        
-        // Menuju barang yang dicari dan menambahkan ke cart
-        cy.topCewek()
-        cy.clickSubMenuAndCheckURL('#ui-id-13', 'Tees', 'https://magento.softwaretestingboard.com/women/tops-women/tees-women.html')
 
-        cy.get('.wrapper > .products').contains(tees).click()
-
-        cy.wait(1000)
-        cy.get('#option-label-size-143-item-169').click()
-        cy.wait(1000)
-        cy.get('#option-label-color-93-item-49').click()
-        cy.wait(1000)
-        cy.get('#product-addtocart-button').click()
-
-        cy.get('.message-success > div').invoke('text').then((text) => {
-            cy.log(text)
-            expect(text).to.include('You added Radiant Tee to your shopping cart.')
-        })
-
+        cy.addToCart(tees)
+    
         // Awal mula checkout
         cy.get('.showcart').click()
 
