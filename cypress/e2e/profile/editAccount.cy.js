@@ -1,7 +1,18 @@
 const firstName = 'Joan'
 const lastName = 'Dre'
-const email = 'joan@yopmail.com'
-const newPassword = 'C£UuxE6d6qQ7E$PqG>%"`l'
+const email = 'joan@yopmail.com'    
+
+function generateRandomString(length) {
+    let randomPass = '';
+  
+    for (let i = 0; i < length; i++) {
+      const randomChar = String.fromCharCode(Math.floor(Math.random() * 93) + 33); // Karakter antara kode ASCII 33 hingga 125
+      randomPass += randomChar;
+    }
+  
+    return randomPass;
+}
+const randomPass = generateRandomString(16)
 
 describe ('Profile Account', () => {
     beforeEach ('', () => {
@@ -63,8 +74,8 @@ describe ('Profile Account', () => {
             cy.get('#current-password').type(data.password)
         })
 
-        cy.get('#password').type(newPassword)
-        cy.get('#password-confirmation').type(newPassword)
+        cy.get('#password').type(randomPass)
+        cy.get('#password-confirmation').type(randomPass)
 
         cy.get('#password-strength-meter').invoke('text').then((text) => {
             const splitText = text.split('\n')
