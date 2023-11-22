@@ -3,6 +3,14 @@ describe ('Cek fungsi dropdown menu sub menu pada halaman index', () => {
         cy.visit('')
     })
 
+    afterEach ('Take screenshot when test failed',function (){
+        if (this.currentTest.state === "failed") {
+            const testName = this.currentTest.title.replace(/\s+/g, '-') // Ganti spasi dengan '-' untuk nama file
+            cy.log('Test Failed')
+            cy.screenshot('Gagal Akses: ' + testName, { capture: 'runner' })
+        }
+    })
+
     it ('Sub Menu: Jaket wanita', () => {
         cy.topCewek()
         cy.clickSubMenuAndCheckURL('#ui-id-11', 'Jackets', 'https://magento.softwaretestingboard.com/women/tops-women/jackets-women.html');

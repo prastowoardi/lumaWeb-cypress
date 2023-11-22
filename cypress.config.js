@@ -4,6 +4,7 @@ module.exports = defineConfig({
   viewportWidth: 1280,
   viewportHeight: 960,
   chromeWebSecurity: false,
+  screenshotOnRunFailure: true,
 
   e2e: {
     setupNodeEvents(on, config) {

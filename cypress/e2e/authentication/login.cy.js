@@ -4,6 +4,14 @@ describe ('Login ke web Luma', () => {
         cy.get('.panel > .header').contains('Sign In').click()
     })
 
+    afterEach ('Take screenshot when test failed',function (){
+        if (this.currentTest.state === 'failed') {
+            const testName = this.currentTest.title.replace(/+/g, '-') // Ganti spasi dengan '-' untuk nama file
+            cy.log('Test Failed')
+            cy.screenshot('case: ' + testName, { capture: 'runner' })
+        }
+    })
+
     it ('Memasukkan credential', () => {
         cy.login()
         cy.visit('customer/account')

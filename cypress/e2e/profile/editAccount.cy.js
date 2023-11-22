@@ -20,6 +20,14 @@ describe ('Profile Account', () => {
         cy.get('.panel > .header').contains('Sign In').click()
         cy.login()
     })
+
+    afterEach ('Take screenshot when test failed',function (){
+        if (this.currentTest.state === "failed") {
+            const testName = this.currentTest.title.replace(/\s+/g, '-') // Ganti spasi dengan '-' untuk nama file
+            cy.log('Test Failed')
+            cy.screenshot('Gagal: ' + testName, { capture: 'runner' })
+        }
+    })
     
     it ('Edit Name', () => {
         cy.visit('customer/account')

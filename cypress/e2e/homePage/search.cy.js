@@ -6,6 +6,14 @@ describe ('Searching product', () => {
         cy.login()
     })
 
+    afterEach ('Take screenshot when test failed',function (){
+        if (this.currentTest.state === "failed") {
+            const testName = this.currentTest.title.replace(/\s+/g, '-') // Ganti spasi dengan '-' untuk nama file
+            cy.log('Test Failed')
+            cy.screenshot('case: ' + testName, { capture: 'runner' })
+        }
+    })
+
     it ('Search dan klik produk', () => {
         cy.get('#search').type(searchKey + '{enter}')
 

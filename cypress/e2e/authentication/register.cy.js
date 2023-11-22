@@ -5,6 +5,14 @@ describe ('Membuat akun untuk login', () => {
         cy.get('.panel > .header').contains('Create an Account').click()
     })
 
+    afterEach ('Take screenshot when test failed',function (){
+        if (this.currentTest.state === "failed") {
+            const testName = this.currentTest.title.replace(/\s+/g, '-') // Ganti spasi dengan '-' untuk nama file
+            cy.log('Test Failed')
+            cy.screenshot('case: ' + testName, { capture: 'runner' })
+        }
+    })
+
     it ('Cek user ada dihalaman register', () => {
         cy.get('.base').invoke('text').then((text) => {
             expect(text).to.equal("Create New Customer Account")

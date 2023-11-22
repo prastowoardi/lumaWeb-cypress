@@ -7,6 +7,14 @@ describe ('Checkout barang', () => {
         cy.login()
     })
 
+    afterEach ('Take screenshot when test failed',function (){
+        if (this.currentTest.state === "failed") {
+            const testName = this.currentTest.title.replace(/\s+/g, '-') // Ganti spasi dengan '-' untuk nama file
+            cy.log('Test Failed')
+            cy.screenshot('case: ' + testName, { capture: 'runner' })
+        }
+    })
+
     it ('Sudah ada barang di keranjang belanja', () => {
         cy.get('.showcart').click()
 
