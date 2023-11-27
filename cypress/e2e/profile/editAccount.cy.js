@@ -1,18 +1,18 @@
-const firstName = 'Joan'
-const lastName = 'Dre'
+// import faker from 'faker';
+const faker = require('@faker-js/faker')
 const email = 'joan@yopmail.com'    
 
-function generateRandomString(length) {
-    let randomPass = '';
+// function generateRandomString(length) {
+//     let randomPass = '';
   
-    for (let i = 0; i < length; i++) {
-      const randomChar = String.fromCharCode(Math.floor(Math.random() * 93) + 33); // Karakter antara kode ASCII 33 hingga 125
-      randomPass += randomChar;
-    }
+//     for (let i = 0; i < length; i++) {
+//       const randomChar = String.fromCharCode(Math.floor(Math.random() * 93) + 33); // Karakter antara kode ASCII 33 hingga 125
+//       randomPass += randomChar;
+//     }
   
-    return randomPass;
-}
-const randomPass = generateRandomString(16)
+//     return randomPass;
+// }
+// const randomPass = generateRandomString(16)
 
 describe ('Profile Account', () => {
     beforeEach ('', () => {
@@ -29,13 +29,13 @@ describe ('Profile Account', () => {
         }
     })
     
-    it ('Edit Name', () => {
+    it.only ('Edit Name', () => {
         cy.visit('customer/account')
 
         cy.get('.block-dashboard-info > .block-content > .box > .box-actions > .edit > span').click()
 
-        cy.get('#firstname').clear().type(firstName)
-        cy.get('#lastname').clear().type(lastName)
+        cy.get('#firstname').clear().type(faker.faker.name.firstName())
+        cy.get('#lastname').clear().type(faker.faker.name.lastName())
 
         cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
 
@@ -82,6 +82,7 @@ describe ('Profile Account', () => {
             cy.get('#current-password').type(data.password)
         })
 
+        const randomPass = faker.faker.internet.password({ length: 10 })
         cy.get('#password').type(randomPass)
         cy.get('#password-confirmation').type(randomPass)
 
