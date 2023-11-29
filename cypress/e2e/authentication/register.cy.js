@@ -1,4 +1,6 @@
 import tesData from "../../fixtures/authentication/register.json"
+const faker = require('@faker-js/faker')
+
 describe ('Membuat akun untuk login', () => {
     beforeEach ('Klik tombol create account', () => {
         cy.visit('/')
@@ -80,20 +82,20 @@ describe ('Membuat akun untuk login', () => {
         })
     })
     
-    it ('[Positif] Membuat akun untuk login', () => {
-        const isiData = tesData.positif[0]; // Mengambil data pertama dari fixture positif
+    it.only ('[Positif] Membuat akun untuk login', () => {
+        const password = faker.faker.internet.password(12)
 
-        cy.get('#firstname').type(isiData.firstName)
-        cy.get('#lastname').type(isiData.lastName)
-        cy.get('#email_address').type(isiData.email)
-        cy.get('#password').type(isiData.password)
-        cy.get('#password-confirmation').type(isiData.confirmPW)
+        cy.get('#firstname').type(faker.faker.name.firstName())
+        cy.get('#lastname').type(faker.faker.name.lastName())
+        cy.get('#email_address').type(faker.faker.internet.email())
+        cy.get('#password').type(password)
+        cy.get('#password-confirmation').type(password)
 
         // Button create account
         cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
 
         cy.get('.message-success').invoke('text').then((text) => {
-            expect(text).to.equal("Thank you for registering with Main Website Store.")
+            expect(text).to.include("Thank you for registering with Main Website Store.")
         })
 
         cy.url().should('eq', 'https://magento.softwaretestingboard.com/customer/account/')

@@ -47,11 +47,9 @@
             "email": "john@yopmail.com",
             "password": "4QqtyXIvUMZq2xC",
             "confirmPW": "4QqtyXIvUMZ"
-        }
-    ],
-    "positif": [
+        },
         {
-            "case": "Field diisi semua",
+            "case": "User Sudah Terdaftar",
             "firstName": "John",
             "lastName": "Doe",
             "email": "john@yopmail.com",
