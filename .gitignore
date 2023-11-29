@@ -5,3 +5,7 @@ screenshots
 
 // log report
 cypress-mochawesome-reporter.log
+
+// report mochawesome
+mochawesome-report
+testReports
