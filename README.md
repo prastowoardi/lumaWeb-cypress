@@ -10,7 +10,7 @@ Untuk running cypress
 npx cypress open
 ```
 
-Untuk menghasilkan report 
+Install mochawesome report 
 ```
 npm i --save-dev cypress-mochawesome-reporter
 ```
@@ -36,7 +36,7 @@ module.exports = defineConfig({
 })
 ```
 
-  Untuk mendapatkan report dalam bentuk html hnaya bisa dijalankan melalui CLI
+  Untuk mendapatkan report dalam bentuk html hanya bisa dijalankan melalui CLI
   ```
   npx cypress run
   ```
