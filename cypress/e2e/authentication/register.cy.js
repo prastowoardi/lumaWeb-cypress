@@ -82,7 +82,7 @@ describe ('Membuat akun untuk login', () => {
         })
     })
     
-    it.only ('[Positif] Membuat akun untuk login', () => {
+    it ('[Positif] Membuat akun untuk login', () => {
         const password = faker.faker.internet.password(12)
 
         cy.get('#firstname').type(faker.faker.name.firstName())
