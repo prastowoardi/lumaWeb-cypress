@@ -26,59 +26,36 @@ describe ('Membuat akun untuk login', () => {
     tesData.negatif.forEach((test) => {
         // Looping Fixture
         it('[Negatif] - Membuat akun untuk login dengan kondisi: ' + test.case, function () {
-            if (test.firstName) {
-                cy.get('#firstname').type(test.firstName)
-            }
-            if (test.lastName) {
-                cy.get('#lastname').type(test.lastName)
-            }
-            if (test.email) {
-                cy.get('#email_address').type(test.email)
-            }
-            if (test.password) {
-                cy.get('#password').type(test.password)
-            }
-            if (test.confirmPW) {
-                cy.get('#password-confirmation').type(test.confirmPW)
-            }
+            const fields = [
+                { id: 'firstname', value: test.firstName },
+                { id: 'lastname', value: test.lastName },
+                { id: 'email_address', value: test.email },
+                { id: 'password', value: test.password },
+                { id: 'password-confirmation', value: test.confirmPW }
+            ]
+    
+            // Mengisi semua input
+            fields.forEach(field => {
+                if (field.value !== null) {
+                    cy.get(`#${field.id}`).type(field.value)
+                }
+            })
     
             // Button create account
             cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     
-            // Check error messages
-            if (test.firstName == null) {
-                cy.get('#firstname-error').invoke('text').then((text) => {
-                    expect(text).to.equal('This is a required field.');
-                });
-            }
-
-            if (test.lastName == null) {
-                cy.get('#lastname-error').invoke('text').then((text) => {
-                    expect(text).to.equal('This is a required field.');
-                });
-            }
-
-            if (test.email == null) {
-                cy.get('#email_address-error').invoke('text').then((text) => {
-                    expect(text).to.equal('This is a required field.');
-                });
-            }
-
-            if (test.password == null) {
-                cy.get('#password-error').invoke('text').then((text) => {
-                    expect(text).to.equal('This is a required field.');
-                });
-            }
-
-            if (test.confirmPW == null) {
-                cy.get('#password-confirmation-error').invoke('text').then((text) => {
-                    expect(text).to.equal('This is a required field.');
-                });
-            } else if (test.confirmPW !== test.password) {
-                cy.get('#password-confirmation-error').invoke('text').then((text) => {
-                    expect(text).to.equal('Please enter the same value again.');
-                });
-            }
+            // Memeriksa error messages
+            fields.forEach(field => {
+                if (field.value === null || (field.id === 'password-confirmation' && field.value !== test.password)) {
+                    cy.get(`#${field.id}-error`).invoke('text').then((text) => {
+                        if (field.value === null) {
+                            expect(text).to.equal('This is a required field.')
+                        } else if (field.id === 'password-confirmation') {
+                            expect(text).to.equal('Please enter the same value again.')
+                        }
+                    })
+                }
+            })
         })
     })
     
