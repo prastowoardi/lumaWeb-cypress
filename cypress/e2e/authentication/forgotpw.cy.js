@@ -23,7 +23,7 @@ describe ('Forgot Password', () => {
         cy.get('.message-error').contains('Please enter your email.')
     })
 
-    it.only ('[Positif] - Forgot Password', () => {
+    it ('[Positif] - Forgot Password', () => {
         cy.get('.login-container > .block-customer-login > .block-content > #login-form > .fieldset > .actions-toolbar > .secondary > .action > span').click()
 
         cy.url().should('eq','https://magento.softwaretestingboard.com/customer/account/forgotpassword/')
