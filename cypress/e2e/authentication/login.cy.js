@@ -17,7 +17,6 @@ describe ('Login ke web Luma', () => {
         cy.visit('customer/account')
 
         cy.get('.box-content > p').invoke('text').then((text) => {
-            cy.log(text)
             const arrayText = text.split(" ")
             cy.log("User login sebagai : " +arrayText[0])
         })

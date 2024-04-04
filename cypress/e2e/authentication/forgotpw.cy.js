@@ -33,11 +33,5 @@ describe ('Forgot Password', () => {
         cy.get('.message-success').invoke('text').then((text) => {
             expect(text).to.include(`If there is an account associated with hazz@yopmail.com you will receive an email with a link to reset your password.`)
         })
-
-        // Buka email
-        // cy.visit('https://yopmail.com/')
-        // cy.get('#login').type('hazz@yopmail.com{enter}')
-        // cy.get('button.lm').contains('CustomerSupport');
-
     })
 })
