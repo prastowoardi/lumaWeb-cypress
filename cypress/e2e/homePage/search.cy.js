@@ -17,7 +17,6 @@ describe ('Searching product', () => {
     it ('Search dan klik produk', () => {
         cy.get('#search').type(searchKey + '{enter}')
 
-        // Cari produk lalu klik produk sesuai searchKey
         cy.contains('.products > .item', searchKey).within(() => {
             cy.get('.product-item-info > .details > .name > .product-item-link').click()
         })
@@ -26,7 +25,6 @@ describe ('Searching product', () => {
     it ('Add to cart', () => {
         cy.get('#search').type(searchKey + '{enter}')
 
-        // Cari produk lalu klik produk sesuai searchKey
         cy.contains('.products > .item', searchKey).within(() => {
             cy.get('.product-item-info > .details > .name > .product-item-link').click()
         })

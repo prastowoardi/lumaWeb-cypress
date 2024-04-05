@@ -34,17 +34,14 @@ describe ('Membuat akun untuk login', () => {
                 { id: 'password-confirmation', value: test.confirmPW }
             ]
     
-            // Mengisi semua input
             fields.forEach(field => {
                 if (field.value !== null) {
                     cy.get(`#${field.id}`).type(field.value)
                 }
             })
     
-            // Button create account
             cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
     
-            // Memeriksa error messages
             fields.forEach(field => {
                 if (field.value === null || (field.id === 'password-confirmation' && field.value !== test.password)) {
                     cy.get(`#${field.id}-error`).invoke('text').then((text) => {
@@ -68,7 +65,6 @@ describe ('Membuat akun untuk login', () => {
         cy.get('#password').type(password)
         cy.get('#password-confirmation').type(password)
 
-        // Button create account
         cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()
 
         cy.get('.message-success').invoke('text').then((text) => {
