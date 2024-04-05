@@ -73,7 +73,7 @@ describe ('Checkout barang', () => {
         cy.url().should('eq', 'https://magento.softwaretestingboard.com/checkout/onepage/success/')
     })
 
-    it.only ('Tidak ada barang di keranjang belanja', () => {
+    it ('Tidak ada barang di keranjang belanja', () => {
         cy.get('.showcart').click()
         // cy.get('#ui-id-1').should('be.visible')
         cy.get('.cart-empty').invoke('text').then((text) => {
