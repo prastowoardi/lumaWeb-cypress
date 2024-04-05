@@ -2,18 +2,6 @@
 const faker = require('@faker-js/faker')
 const email = 'joan@yopmail.com'    
 
-// function generateRandomString(length) {
-//     let randomPass = '';
-  
-//     for (let i = 0; i < length; i++) {
-//       const randomChar = String.fromCharCode(Math.floor(Math.random() * 93) + 33); // Karakter antara kode ASCII 33 hingga 125
-//       randomPass += randomChar;
-//     }
-  
-//     return randomPass;
-// }
-// const randomPass = generateRandomString(16)
-
 describe ('Profile Account', () => {
     beforeEach ('', () => {
         cy.visit('')
