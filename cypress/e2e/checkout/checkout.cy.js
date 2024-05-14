@@ -44,19 +44,18 @@ describe ('Checkout barang', () => {
 
         cy.wait(7000)
         cy.get('.shipping-address-item.not-selected-item .action-select-shipping-item').click()
-        // // Mengisi Alamat Pengiriman jika belum ada
-        // cy.get('.new-address-popup > .action').click()
-        // cy.get('[name="company"]').type(faker.faker.company.name())
-        // cy.get('[name="street[0]"]').type(faker.faker.location.streetAddress())
-        // cy.get('[name="city"]').type(faker.faker.location.city())
-        // cy.get('[name="region_id"]').select('Virginia')
-        // cy.get('[name="postcode"]').type(faker.faker.location.zipCode())
-        // cy.get('[name="country_id"]').select('Uganda')
-        // cy.get('[name="telephone"]').type(faker.faker.phone.number())
+        // Mengisi Alamat Pengiriman jika belum ada
+        cy.get('.new-address-popup > .action').click()
+        cy.get('[name="company"]').type(faker.faker.company.name())
+        cy.get('[name="street[0]"]').type(faker.faker.location.streetAddress())
+        cy.get('[name="city"]').type(faker.faker.location.city())
+        cy.get('[name="region_id"]').select('Virginia')
+        cy.get('[name="postcode"]').type(faker.faker.location.zipCode())
+        cy.get('[name="country_id"]').select('Uganda')
+        cy.get('[name="telephone"]').type(faker.faker.phone.number())
         
-        // // if you dont want to save address just comment
-        // // cy.get('#shipping-save-in-address-book').click()
-        // cy.get('.modal-footer > .primary').contains('Ship here').click()
+        // cy.get('#shipping-save-in-address-book').click()
+        cy.get('.modal-footer > .primary').contains('Ship here').click()
 
         cy.get('.button').contains('Next').click()
 
@@ -112,19 +111,18 @@ describe ('Checkout barang', () => {
         cy.wait(7000)
         cy.get('.shipping-address-item.not-selected-item .action-select-shipping-item').click()
 
-        // // Mengisi Alamat Pengiriman jika belum ada
-        // cy.get('.new-address-popup > .action').click()
-        // cy.get('[name="company"]').type(faker.faker.company.name())
-        // cy.get('[name="street[0]"]').type(faker.faker.location.streetAddress())
-        // cy.get('[name="city"]').type(faker.faker.location.city())
-        // cy.get('[name="region_id"]').select('Virginia')
-        // cy.get('[name="postcode"]').type(faker.faker.location.zipCode())
-        // cy.get('[name="country_id"]').select('Uganda')
-        // cy.get('[name="telephone"]').type(faker.faker.phone.number())
+        // Mengisi Alamat Pengiriman jika belum ada
+        cy.get('.new-address-popup > .action').click()
+        cy.get('[name="company"]').type(faker.faker.company.name())
+        cy.get('[name="street[0]"]').type(faker.faker.location.streetAddress())
+        cy.get('[name="city"]').type(faker.faker.location.city())
+        cy.get('[name="region_id"]').select('Virginia')
+        cy.get('[name="postcode"]').type(faker.faker.location.zipCode())
+        cy.get('[name="country_id"]').select('Uganda')
+        cy.get('[name="telephone"]').type(faker.faker.phone.number())
         
-        // // if you dont want to save address just comment
-        // // cy.get('#shipping-save-in-address-book').click()
-        // cy.get('.modal-footer > .primary').contains('Ship here').click()
+        // cy.get('#shipping-save-in-address-book').click()
+        cy.get('.modal-footer > .primary').contains('Ship here').click()
 
         cy.get('.button').contains('Next').click()
 
